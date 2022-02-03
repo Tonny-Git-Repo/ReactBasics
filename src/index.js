@@ -1,17 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+//basic normal function
+//nested Component
+function ShowAll(){
+  return(
+    <>
+    <Greeting/>
+    <ContentText/>
+    <SayGoodBey/>
+    </>
+  )
+}
+//arrow function with explicit return
+const Greeting  = () => {
+  return <h1>Hello and wellcome...</h1>
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//Arrow function with implicit return
+const SayGoodBey = () =>  <h4>It was nice to meet yout but good bey..</h4>
+
+//simple anonymous function
+const ContentText = function(){
+  return (
+    <h3>This is my first React Component</h3>
+  )
+}
+
+/* you can't render more than one element into the DOM with ReactDOM,
+as we tried hier, only one Element will be displayed,
+To render more than one Component, we must put them all together in one Component, and then render this one "big" Component
+*/
+
+ReactDOM.render(<ShowAll/>, document.getElementById('root'));
+//ReactDOM.render(<SayGoodBey/>, document.getElementById('root'));
+//ReactDOM.render(<ContentText/>, document.getElementById('root'));
